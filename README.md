@@ -40,6 +40,25 @@ int peek(queue *input_queue) {
 ```
 ***
 ## Enqueue function
+Enqueuing the value means adding a node at the tail of the function. The old tail's next points to new tails address. The new tails address is given to queue.
+If the size of the queue is zero, the head and tail of the queue is the address of the new node. size is incremented at the end of the function.
+
+__Psuedo Code__
+```c
+void enqueue(queue *input_queue, int value) {
+  node *new_node = create_node(value);
+  if (input_queue->size == 0) {
+    input_queue->head = new_node;
+    input_queue->tail = new_node;
+    input_queue->size++;
+    return;
+  }
+  node *current_tail = input_queue->tail;
+  input_queue->tail = new_node;
+  current_tail->next = new_node;
+  input_queue->size++;
+}
+```
 ***
 ## Dequeue function
 ***
