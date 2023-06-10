@@ -3,8 +3,8 @@
 Queues are __Last In First Out(LIFO)__ type data structures. They are linked list based. They contain following functions,
 
 - [x] Peek
-- [ ] Enqueue
-- [ ] Dequeue
+- [x] Enqueue
+- [x] Dequeue
 ***
 ## Queue Data Structure
 Queue data structure contains size of the queue and the pointer to the head node as well as pointer to tail node.
@@ -61,4 +61,21 @@ void enqueue(queue *input_queue, int value) {
 ```
 ***
 ## Dequeue function
+Dequeueing the value means removing the node from the head and returning the value stored in the node. New head is the next value of the current. Empty queue returns 0.
+
+__Psuedo Code__
+```c
+int dequeue(queue *input_queue) {
+  if (input_queue->size == 0) {
+    printf("Queue empty.\n");
+    return 0;
+  }
+  node *current_head = input_queue->head;
+  input_queue->head = current_head->next;
+  int return_value = current_head->value;
+  free(current_head);
+  input_queue->size--;
+  return return_value;
+}
+```
 ***
