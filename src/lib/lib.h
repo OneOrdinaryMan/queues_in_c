@@ -19,4 +19,5 @@ int peek(queue *);
 void enqueue(queue *, int);
 int dequeue(queue *);
 void delete_queue(queue *);
+void user_input(queue *);
 #endif

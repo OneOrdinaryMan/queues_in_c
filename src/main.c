@@ -2,8 +2,7 @@
 #include <stdio.h>
 int main() {
   queue input_queue = create_queue();
-  enqueue(&input_queue, 5);
-  enqueue(&input_queue, 6);
+  user_input(&input_queue);
   printf("%d\n", dequeue(&input_queue));
   printf("%d\n", peek(&input_queue));
   delete_queue(&input_queue);
