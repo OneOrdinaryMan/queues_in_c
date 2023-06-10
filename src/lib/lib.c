@@ -33,8 +33,31 @@ int peek(queue *input_queue) {
   int return_value = input_queue->head->value;
   return return_value;
 }
-void enqueue(queue *, int);
-int dequeue(queue *);
+void enqueue(queue *input_queue, int value) {
+  node *new_node = create_node(value);
+  if (input_queue->size == 0) {
+    input_queue->head = new_node;
+    input_queue->tail = new_node;
+    input_queue->size++;
+    return;
+  }
+  node *current_tail = input_queue->tail;
+  input_queue->tail = new_node;
+  current_tail->next = new_node;
+  input_queue->size++;
+}
+int dequeue(queue *input_queue) {
+  if (input_queue->size == 0) {
+    printf("Queue empty.\n");
+    return 0;
+  }
+  node *current_head = input_queue->head;
+  input_queue->head = current_head->next;
+  int return_value = current_head->value;
+  free(current_head);
+  input_queue->size--;
+  return return_value;
+}
 void delete_queue(queue *input_queue) {
   while (input_queue->size > 0) {
     dequeue(input_queue);
