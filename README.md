@@ -34,6 +34,7 @@ int peek(queue *input_queue) {
     printf("queue empty.\n");
     return 0;
   }
+
   int return_value = input_queue->head->value;
   return return_value;
 }
@@ -47,12 +48,14 @@ __Psuedo Code__
 ```c
 void enqueue(queue *input_queue, int value) {
   node *new_node = create_node(value);
+
   if (input_queue->size == 0) {
     input_queue->head = new_node;
     input_queue->tail = new_node;
     input_queue->size++;
     return;
   }
+
   node *current_tail = input_queue->tail;
   input_queue->tail = new_node;
   current_tail->next = new_node;
@@ -70,6 +73,7 @@ int dequeue(queue *input_queue) {
     printf("Queue empty.\n");
     return 0;
   }
+
   node *current_head = input_queue->head;
   input_queue->head = current_head->next;
   int return_value = current_head->value;
